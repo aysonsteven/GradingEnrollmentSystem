@@ -1,0 +1,35 @@
+  
+  <template ngbModalContainer></template>
+  <br>
+  <div class="container" >
+    <h2 ><strong *ngIf="session.backRoute" (click) = "onClickBackArrow()" >&larr;</strong><strong class="text-primary">LOGO</strong>  Philgo </h2> 
+  </div>
+  <nav class="navbar  navbar-dark bg-primary ">
+    <div class="container">
+        <button class="navbar-toggler hidden-lg-up"
+                  type="button" 
+                  data-toggle="collapse" 
+                  data-target="#exCollapsingNavbar" 
+                  aria-controls="exCollapsingNavbar" 
+                  aria-expanded="false" 
+                  aria-label="Toggle navigation">
+        </button> 
+      </div>
+      <div class="container collapse navbar-toggleable-md" id="exCollapsingNavbar"> <div class="nav navbar-nav">
+              <a class="nav-item nav-link active" routerLink = "/">Home</a>  
+              <a class="nav-item nav-link" *ngIf="!session.login" routerLink = "/login">Login</a>                  
+              <a class="nav-item nav-link" *ngIf="!session.login" routerLink = "/register">Register</a> 
+              <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/register">Profile</a> 
+              <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/forums">Forum</a>   
+              <a class="nav-item nav-link" *ngIf="session.login" (click)="onClickLogout()">Logout</a>                 
+          </div>
+        </div>
+  </nav>
+  <div class="container">
+      <main style="padding-top:20px;">
+        <div class="content routerOutlet">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+  </div>
+
