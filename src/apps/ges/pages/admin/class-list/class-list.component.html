@@ -1,0 +1,20 @@
+<div class="class-list"> Hello ClassListComponent! </div>
+<a class="nav-item nav-link" *ngIf="session.login" routerLink = "/admin/class">Add Class</a>        
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor = "let adminClass of class_list" >
+           <a (click)="onClickGo(adminClass.idx)"> 
+            <strong>Access Code</strong>
+            <span>{{adminClass.idx}}</span><br>
+             <strong>Course code</strong>
+            <span>{{adminClass.varchar_1}}</span><br>
+             <strong>Course</strong>
+            <span>{{adminClass.varchar_2}}</span><br>
+             <strong>Units</strong>
+            <span>{{adminClass.varchar_3}}</span><br>
+            </a>
+
+            <button (click)="onClickDelete(adminClass.idx)">Delete</button>
+        </li>
+    </ul>
+</div>

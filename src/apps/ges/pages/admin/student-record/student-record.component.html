@@ -1,0 +1,61 @@
+<div class="class-list"> Hello ClassListComponent! </div>
+<table class="table table-border">
+    <tr>
+        <th >
+            Access code
+        </th>
+         <th>
+            Course code
+        </th>
+        <th>
+            Course
+        </th>
+        <th>
+            Unit
+        </th>
+        <th>
+            Prelim
+        </th>
+        <th>
+            Midterm
+        </th>
+        <th>
+            Finals
+        </th>
+        <th>
+            Average
+        </th>
+        <td *ngIf="TabOne">  
+            Status   
+        </td>
+    </tr>
+    <tr *ngFor = "let record of records">
+        <td>  
+            <span>{{record.varchar_1}}</span><br>   
+        </td>
+        <td>  
+            
+            <span>{{record.varchar_4}}</span><br>   
+        </td>
+        <td>  
+            <span>{{record.varchar_5}}</span><br>   
+        </td>
+        <td>  
+            <span>{{record.varchar_6}}</span><br>   
+        </td>
+        <td>  
+            <span>{{record.varchar_7}}</span><br>   
+        </td>
+        <td>  
+            <span>{{record.varchar_8}}</span><br>   
+        </td>
+        <td>  
+            <span>{{record.varchar_9}}</span><br>   
+        </td>
+        <td>  
+            <span>{{record.varchar_10}}</span><br>   
+        </td>
+        <td *ngIf="TabOne">  
+        </td>
+    </tr>
+</table>

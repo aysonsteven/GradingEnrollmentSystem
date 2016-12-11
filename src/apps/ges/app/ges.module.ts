@@ -12,9 +12,13 @@ import { PhilgoApiModule } from '../services/philgo-api/v2/philgo-api-module';
 import { SessionService} from '../services/session.service';
 import { NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { HTMLCHARPipe } from '../pipes/htmlchar.pipe';
-import { AdminIndexComponent} from '../pages/admin/admin-index/admin-index';
-import { AdminMainComponent} from '../pages/admin/admin-main/admin-main';
 import { AdminClassComponent} from '../pages/admin/admin-class/admin-class';
+import { ClassListComponent} from '../pages/admin/class-list/class-list.component';
+import { EnrollComponent} from '../pages/admin/enroll/enroll.component';
+import { StudentRecordComponent} from '../pages/admin/student-record/student-record.component';
+import { ClassRecordComponent} from '../pages/admin/class-record/class-record.component';
+
+
 
 require('zone.js');
 
@@ -22,10 +26,13 @@ const links : Routes = [
   { path: '',component : HomeComponent },
   { path : 'login', component : LoginComponent },
   { path : 'register',   component : RegisterComponent },
-  { path : 'admin',   component : AdminIndexComponent },
-  { path : 'admin/main',   component : AdminMainComponent },
-  { path : 'admin/class/:companyId',   component : AdminClassComponent },
-  { path : 'admin/enrollment/:companyId',   component : EnrollmentComponent },
+  { path : 'admin/class/list',   component : ClassListComponent },
+  { path : 'admin/class',   component : AdminClassComponent },
+  { path : 'admin/class/enroll',   component : EnrollComponent },
+  { path : 'admin/class/student',   component : StudentRecordComponent },
+  { path : 'admin/class/record/:code',   component : ClassRecordComponent },
+  
+  
 ];
 
 @NgModule({
@@ -36,9 +43,11 @@ const links : Routes = [
     RegisterComponent,
     HTMLCHARPipe,
     GesComponent,
-    AdminIndexComponent,
-    AdminMainComponent,
     AdminClassComponent,
+    ClassListComponent,
+    EnrollComponent,
+     StudentRecordComponent,
+     ClassRecordComponent
   ],
   imports: [
     BrowserModule,

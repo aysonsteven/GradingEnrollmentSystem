@@ -1,0 +1,62 @@
+<div class="class-list"> Hello ClassListComponent! </div>
+<table class="table table-border">
+    <tr>
+        <th >
+            Access code
+        </th>
+        <th >
+            Student
+        </th>
+         <th>
+            Course code
+        </th>
+        <th>
+            Course
+        </th>
+        <th>
+            Unit
+        </th>
+        <th>
+            Prelim
+        </th>
+        <th>
+            Midterm
+        </th>
+        <th>
+            Finals
+        </th>
+        <th>
+           
+        </th>
+        
+    </tr>
+    <tr *ngFor = "let record of records">
+        <td>  
+            <span>{{record.varchar_1}}</span><br>   
+        </td>
+        <td>  
+            <span>{{record.varchar_3}}</span><br>   
+        </td>
+        <td>  
+            {{record.varchar_4}}
+        </td>
+        <td>  
+            {{record.varchar_5}}
+        </td>
+        <td>  
+            {{record.varchar_6}}
+        </td>
+        <td>  
+            <span><input type="number" max="99" min ="60" [(ngModel)]="record.varchar_7"></span><br>      
+        </td>
+        <td>  
+            <span><input type="number" max="99" min ="60" [(ngModel)]="record.varchar_8"></span><br>   
+        </td>
+        <td>  
+            <span><input type="number" max="99" min ="60" [(ngModel)]="record.varchar_9"></span><br>   
+        </td>
+        <td >  
+            <button (click)="onClickUpdate(record)">Update</button>  
+        </td>
+    </tr>
+</table>
