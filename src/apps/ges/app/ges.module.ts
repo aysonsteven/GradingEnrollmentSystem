@@ -15,7 +15,6 @@ import { HTMLCHARPipe } from '../pipes/htmlchar.pipe';
 import { AdminIndexComponent} from '../pages/admin/admin-index/admin-index';
 import { AdminMainComponent} from '../pages/admin/admin-main/admin-main';
 import { AdminClassComponent} from '../pages/admin/admin-class/admin-class';
-import { EnrollmentComponent} from '../pages/enrollment/enrollment.component';
 
 require('zone.js');
 
@@ -40,7 +39,6 @@ const links : Routes = [
     AdminIndexComponent,
     AdminMainComponent,
     AdminClassComponent,
-    EnrollmentComponent
   ],
   imports: [
     BrowserModule,
