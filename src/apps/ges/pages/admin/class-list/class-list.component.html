@@ -1,4 +1,4 @@
-<div class="class-list"> Hello ClassListComponent! </div>
+<h2 class="class-list"> Classes </h2>
 <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/admin/class">Add Class</a>        
 <div class="search-results"
      infinite-scroll
@@ -19,7 +19,7 @@
             <span>{{adminClass.varchar_3}}</span><br>
             </a>
 
-            <button (click)="onClickDelete(adminClass.idx)">Delete</button>
+            <span class="fa fa-trash text-danger" (click)="onClickDelete(adminClass.idx)"> Delete</span>
         </li>
     </ul>
 </div>

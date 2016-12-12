@@ -39,7 +39,13 @@ export class LoginComponent implements OnInit {
     if( !this.validate( this.form )) return;
 
     this.member.login(this.form , login=>{
+        this.member.data(data=>{
+          this.session.userData = data;
+          console.log("User data:", data)
+        });
+        
         this.session.login = login;
+        console.log(this.session.login)
         this.router.navigate(['']);     
     }, er =>{
         console.log("Error", er);

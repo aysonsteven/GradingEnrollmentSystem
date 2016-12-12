@@ -31,7 +31,7 @@ export class StudentRecordComponent implements OnInit {
 	let data = <SEARCH_QUERY_DATA> {};
 		data.fields = "user_id,idx,varchar_1, varchar_2, varchar_3, varchar_4, varchar_5, varchar_6, varchar_7, varchar_8, varchar_9, varchar_10 ";
 		data.from = "sf_post_data";
-		data.where = "post_id='job' AND category='student_record'  AND user_id = '"+this.session.login.id+"'";
+		data.where = "post_id='job' AND category='student_record'  AND varchar_2 = '"+this.session.login.id+"'";
 		data.limit = "100";
 		this.post.search( data, re=>{	
 			this.records = re.search;

@@ -16,12 +16,12 @@
               <a class="nav-item nav-link active" routerLink = "/">Home</a>  
               <a class="nav-item nav-link" *ngIf="!session.login" routerLink = "/login">Login</a>                  
               <a class="nav-item nav-link" *ngIf="!session.login" routerLink = "/register">Register</a> 
-              <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/register">Profile</a> 
-              <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/admin/class/list">Classes</a> 
-              <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/admin/class/enroll">Enroll</a>        
-              <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/admin/class/student">Student View</a>        
-                     
-              <a class="nav-item nav-link" *ngIf="session.login" (click)="onClickLogout()">Logout</a>                 
+              <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/register">Profile</a>    
+              <a class="nav-item nav-link" *ngIf="session.login" (click)="onClickLogout()">Logout</a>   
+              <a class="nav-item nav-link" *ngIf="session.userData.varchar_1" routerLink = "/admin/class/list">Classes</a> 
+              <a class="nav-item nav-link" *ngIf="session.userData.varchar_1" routerLink = "/admin/class/enroll">Enroll</a>        
+              <a class="nav-item nav-link" *ngIf="session.userData.varchar_2" routerLink = "/admin/class/student">Student View</a>        
+                         
           </div>
         </div>
   </nav>

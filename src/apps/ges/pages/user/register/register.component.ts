@@ -16,13 +16,14 @@ export class RegisterComponent implements OnInit {
   loading : boolean = false;
   userAlert : string = "";
   form = <MEMBER_DATA>{};
-
+  user_role = "student";
   constructor(
     private member : Member, 
     private router : Router,
     private session : SessionService
      ) {
     console.log("RegisterComponent  :: Construct()");
+       this.form.varchar_1 = "student"; 
         this.session.setBackRoute('');
         this.session.login  = this.member.getLoginData();
         this.loadUserData();
@@ -31,10 +32,28 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  role(){
+     alert(this.form.varchar_1)
+  }
   onClickRegister(){
     
     if(!this.validate(this.form)) return;
+
+
+
+    this.form.varchar_1 = this.user_role == "instructor"? this.user_role : "";
+    this.form.varchar_2 = this.user_role == "student"? this.user_role : "";
+
+
     this.member.register(this.form, login=>{
+
+      console.log(login);
+      this.member.data(data=>{
+        this.session.userData = data;
+         console.log("User data:", data)
+      });
+      
        this.session.login = login;
        this.router.navigate(['']);   
     }, error=>{ 

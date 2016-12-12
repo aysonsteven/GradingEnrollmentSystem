@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService} from '../../../services/session.service';
 import { Member } from '../../../services/philgo-api/v2/member';
+import { MEMBER_DATA } from '../../../services/philgo-api/v2/philgo-api-interface';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,6 +29,7 @@ export class LayoutComponent implements OnInit {
   onClickLogout(){
     this.member.logout();
     this.session.login = "";
+    this.session.userData = <MEMBER_DATA>{};
     this.router.navigate(['']);
   }
 

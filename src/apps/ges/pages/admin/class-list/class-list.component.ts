@@ -67,8 +67,8 @@ onClickGo(idx){
 			this.childRecords.forEach(value=>{
 				this.post.delete(value.idx,()=>{
 					console.log("success deleting child")
-				},()=>{
-					console.log("Error on deleting child");
+				},e=>{
+					console.log("Error on deleting child", e);
 				})
 			})
 		});
@@ -82,7 +82,7 @@ onClickGo(idx){
 				console.log("success deleting")		
 				_.remove( this.class_list, item=>{
 					console.log(item.idx +" and " + idx);
-				 	return parseInt(item.idx) == parseInt(idx);
+				 	return item.idx == idx;
 				});
 
 			},error=>{
@@ -131,7 +131,6 @@ onClickGo(idx){
 
 
 	onScroll(){
-
 		console.log("Scroll down");
 	}
 

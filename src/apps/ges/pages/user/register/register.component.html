@@ -4,7 +4,18 @@
 
 <p *ngIf="loading">Loading data from server...</p>
 <p *ngIf = "userAlert" class="alert-warning">*{{userAlert}}!!!</p>
-<form *ngIf = "!loading">
+<form *ngIf = "!loading" >
+  <div class="form-group">
+    <label for="role">Role</label>
+    <select [(ngModel)]="user_role" name = "role" class="form-control">
+      <option value="student">
+        Student
+      </option>
+      <option value="instructor">
+        Instructor
+      </option>
+    </select> 
+  </div>
   <div class="form-group">
     <label for="id">Id</label>
     <input type = "text" [(ngModel)]="form.id" class="form-control" name="id" >  
@@ -13,7 +24,7 @@
     <label for="email">Email</label>
     <input type = "email" [(ngModel)]="form.email" class="form-control" name="email">  
   </div>
-  <div *ngIf="form.pasword" class="form-group">
+  <div  class="form-group">
     <label for="password">Password</label>
     <input type = "password" [(ngModel)]="form.password" class="form-control" name="password">  
   </div> 

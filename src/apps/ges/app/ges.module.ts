@@ -20,6 +20,7 @@ import { ClassRecordComponent} from '../pages/admin/class-record/class-record.co
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 
+
 require('zone.js');
 
 const links : Routes = [
