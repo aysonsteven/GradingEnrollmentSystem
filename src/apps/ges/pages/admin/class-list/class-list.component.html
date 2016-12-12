@@ -1,6 +1,11 @@
 <div class="class-list"> Hello ClassListComponent! </div>
 <a class="nav-item nav-link" *ngIf="session.login" routerLink = "/admin/class">Add Class</a>        
-<div>
+<div class="search-results"
+     infinite-scroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="500"
+     (scrolled)="onScroll()">
+
     <ul class="list-group">
         <li class="list-group-item" *ngFor = "let adminClass of class_list" >
            <a (click)="onClickGo(adminClass.idx)"> 
@@ -18,3 +23,4 @@
         </li>
     </ul>
 </div>
+

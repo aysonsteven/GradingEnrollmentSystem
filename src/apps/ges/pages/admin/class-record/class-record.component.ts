@@ -45,6 +45,9 @@ export class ClassRecordComponent implements OnInit {
 	}
 
 
+	
+
+
 	onClickUpdate(record : POST_DATA){
 				
 		this.post.update(record, result=>{

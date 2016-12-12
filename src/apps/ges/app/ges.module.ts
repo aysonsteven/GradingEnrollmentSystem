@@ -17,7 +17,7 @@ import { ClassListComponent} from '../pages/admin/class-list/class-list.componen
 import { EnrollComponent} from '../pages/admin/enroll/enroll.component';
 import { StudentRecordComponent} from '../pages/admin/student-record/student-record.component';
 import { ClassRecordComponent} from '../pages/admin/class-record/class-record.component';
-
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 
 require('zone.js');
@@ -51,6 +51,7 @@ const links : Routes = [
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     FormsModule,
     HttpModule,
     PhilgoApiModule,

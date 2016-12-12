@@ -13,40 +13,57 @@ import * as _ from 'lodash';
 export class ClassListComponent implements OnInit {
 	class_list = Array<POST_DATA>();
 	childRecords = Array<POST_DATA>();
+	limit = 10;
+	fields = Array<string>();
+
 	constructor(
 		private post : Post,
 		private session : SessionService,
 		private router : Router
 		){
-				this.loadClassList();
+				this.loadClassList(this.limit);
 	}
 
+	add_field(field : string){
+		this.fields.push(field);
+	}
+
+	get_fields(){
+		return this.fields.join(", ");
+	}
 
 onClickGo(idx){
 	this.router.navigate(["admin/class/record",idx+""])
 }
 
 
-	loadClassList(){
-	let data = <SEARCH_QUERY_DATA> {};
-		data.fields = "user_id,idx,varchar_1, varchar_2, varchar_3";
-		data.from = "sf_post_data";
-		data.where = "post_id='job' AND category='ges_class'  AND user_id = '"+this.session.login.id+"'";
-		data.limit = "100";
-		this.post.search( data, re=>{	
-			this.class_list = re.search;
-			console.log(this.class_list)
-		},error =>{
+	loadClassList(limit : number){
+		let data = <SEARCH_QUERY_DATA> {};
 
-			console.log(error);
-		});
+			this.add_field("user_id");
+			this.add_field("idx");
+			this.add_field("varchar_1");
+			this.add_field("varchar_2");
+			this.add_field("varchar_3");
+
+			data.fields =  this.get_fields() + "";
+			data.from = "sf_post_data";
+			data.where = `post_id='job' AND category='ges_class'  AND user_id = '${this.session.login.id}'`;
+			data.limit = limit.toString();
+			this.post.search( data, re=>{	
+				this.class_list = re.search;
+				console.log(this.class_list)
+			},error =>{
+
+				console.log(error);
+			});
 
 
 	}
 
-	onClickDelete(idx){
-			this.getChildRecord(idx);
-
+	delete_child_records(idx){
+		
+		this.getChildRecord(idx, ()=>{
 			this.childRecords.forEach(value=>{
 				this.post.delete(value.idx,()=>{
 					console.log("success deleting child")
@@ -54,38 +71,68 @@ onClickGo(idx){
 					console.log("Error on deleting child");
 				})
 			})
+		});
+			
+	}
+
+	onClickDelete(idx){
+			this.delete_child_records(idx)
 
 			this.post.delete(idx, result=>{
-				console.log("success deleting")
-
-				
-				console.log(this.class_list.length);
+				console.log("success deleting")		
 				_.remove( this.class_list, item=>{
 					console.log(item.idx +" and " + idx);
 				 	return parseInt(item.idx) == parseInt(idx);
-				})
-				console.log(this.class_list.length);
+				});
+
 			},error=>{
+
+				alert("Error on Deleting Class: " + error);
 				console.log("Error on deleting");
 			})
 	}
 
 
-	getChildRecord(accesscode){
-	let data = <SEARCH_QUERY_DATA> {};
-		data.fields = "user_id,idx,category,content,subject,varchar_1, varchar_2, varchar_3,varchar_4,varchar_5,varchar_6,varchar_7,varchar_8,varchar_9,varchar_10,varchar_11";
-		data.from = "sf_post_data";
-		data.where = "post_id='job' AND category='student_record'  AND varchar_1 = '"+accesscode+"'";
-		data.limit = "30";
-		this.post.search( data, re=>{	
-			this.childRecords = re.search;
-			console.log(this.childRecords)
-		},error =>{
+	getChildRecord(accesscode, callback){
 
-			console.log(error);
-		});
+		    this.add_field("user_id");
+			this.add_field("idx");
+			this.add_field("category");
+			this.add_field("varchar_1");
+			this.add_field("varchar_2");
+			this.add_field("varchar_3");
+			this.add_field("varchar_4");
+			this.add_field("varchar_5");
+			this.add_field("varchar_6");
+			this.add_field("varchar_7");
+			this.add_field("varchar_8");
+			this.add_field("varchar_9");
+			this.add_field("varchar_10");
+			this.add_field("varchar_11");
+			
+
+			let data = <SEARCH_QUERY_DATA> {};		
+				data.fields = this.get_fields();
+				data.from = "sf_post_data";
+				data.where = `post_id='job' AND category='student_record'  AND varchar_1 = '${accesscode}'`;
+				data.limit = "30";
+				
+				this.post.search( data, re=>{	
+					this.childRecords = re.search;
+					callback();
+				},error =>{
+
+					console.log(error);
+				});
 
 
+	}
+
+
+
+	onScroll(){
+
+		console.log("Scroll down");
 	}
 
 	ngOnInit() { }
